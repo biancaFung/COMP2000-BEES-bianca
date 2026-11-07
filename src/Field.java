@@ -13,6 +13,7 @@ public class Field extends Location {
     float flowerTimer = 10f;
 
     AssetManager assets;
+    static NameManager waspNames = new NameManager("Assets/waspNames.txt");
 
     Field(Vector3 Location, float fieldSize, AssetManager aManager) {
         super("Field", Location);
@@ -35,7 +36,8 @@ public class Field extends Location {
     }
 
     public void SpawnFlower(){
-        Flower newflower = new Flower("tulip", RandomFloorPos(fieldSize), 100,assets.GetTexture("flower"));
+        int fInt=rand.nextInt(5)+1;
+        Flower newflower = new Flower("tulip", RandomFloorPos(fieldSize), 100,assets.GetTexture("flower"+fInt));
         flowerfield.add(newflower);
     }
 
@@ -51,7 +53,7 @@ public class Field extends Location {
 
     public void spawnWasp(){
         float randx = new Random().nextFloat(-fieldSize, fieldSize);
-        EnemyWasp newWasp = new EnemyWasp("Gwesped",new Vector3().x(randx).y(2.1f).z(-1f),assets.GetTexture("wasp"));
+        EnemyWasp newWasp = new EnemyWasp(waspNames.randomName(),new Vector3().x(randx).y(2.1f).z(-1f),assets.GetTexture("wasp"));
         wasps.add(newWasp);
     }
 

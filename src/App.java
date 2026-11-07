@@ -41,7 +41,7 @@ public class App {
         AssetManager assets = new AssetManager();
 
         Field flowers = new Field(CameraOrigin, 9f, assets);
-        for(int i=0;i<10;i++){flowers.SpawnFlower();}//temp flower spawner
+        for(int i=0;i<20;i++){flowers.SpawnFlower();}//temp flower spawner
 
         Hive hive = new Hive(new Vector3().x(0.4f).y(2.1f).z(-1f), flowers, assets);
         //for(int i=0;i<10;i++){hive.CreateBee();}//temp start bee spawner
