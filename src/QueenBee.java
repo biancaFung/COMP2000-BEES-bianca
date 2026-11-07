@@ -39,7 +39,6 @@ public class QueenBee extends Bee {
         } */
        eggTimer += deltaTime;
        if (myHive.HoneyCapacity >= eatAmount && eggTimer > eggInterval){
-            System.out.println("laying");
             eggTimer = 0f;
             myHive.CreateBee();
             myHive.HoneyCapacity -= eatAmount;

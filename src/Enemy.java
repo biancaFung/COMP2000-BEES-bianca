@@ -8,7 +8,7 @@ import com.raylib.Raylib.Vector3;
 import Components.CollisionBox;
 
 
-public class Enemy implements CollisionBox, Simulated {
+public class Enemy implements CollisionBox, Simulated, EnemyState {
     String name;
     float speed = 2f; //same speed as bees?
     float scale= 0.5f;
@@ -16,12 +16,13 @@ public class Enemy implements CollisionBox, Simulated {
     float health=100f;
     static int totalBeesKilled=0;
     
-    enum EnemyState {
-        RESTING,
-        ATTACKING;
+    EnemyState currentState;
+    public void setState(EnemyState state){
+        this.currentState=state;
     }
-
-    EnemyState state = EnemyState.RESTING;
+    public EnemyState getState(){
+        return this.currentState;
+    }
 
     //I also took this from the bee class
     //if its in the base class then it doesn't need to be specified here
@@ -45,8 +46,9 @@ public class Enemy implements CollisionBox, Simulated {
     }
 
 
-    public void update(float deltaTime){
-    }
+    public void update(float deltaTime){}
+    @Override
+    public void update(EnemyWasp wasp, float deltaTime){}
 
     public void Draw(Camera3D camera){
         DrawBillboard(camera, VisualTexture, Position, scale, RAYWHITE);
